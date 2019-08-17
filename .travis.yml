@@ -3,10 +3,11 @@ compiler:
 - gcc
 script: true
 before_install:
-- openssl aes-256-cbc -K $encrypted_af9dad8b5d70_key -iv $encrypted_af9dad8b5d70_iv
-  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- openssl aes-256-cbc -K $encrypted_af9dad8b5d70_key -iv $encrypted_af9dad8b5d70_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- ssh-add ~/.ssh/id_rsa
 addons:
         ssh_known_hosts: 95.169.14.25
 after_success:
-- chmod 600 ~/.ssh/id_rsa
+
 - ssh -p 26830 root@95.169.14.25 -o StrictHostKeyChecking=no 'cd /home/github.com/leetcode && git pull'
