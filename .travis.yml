@@ -9,4 +9,4 @@ addons:
         ssh_known_hosts: 95.169.14.25
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- ssh root@95.169.14.25 -o StrictHostKeyChecking=no
+- ssh root@95.169.14.25 -o StrictHostKeyChecking=no 'cd /home/github.com/leetcode && git pull'
