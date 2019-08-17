@@ -4,6 +4,7 @@ compiler:
 script: true
 before_install:
 - openssl aes-256-cbc -K $encrypted_af9dad8b5d70_key -iv $encrypted_af9dad8b5d70_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- eval "$(ssh-agent -s)"
 - chmod 600 ~/.ssh/id_rsa
 - ssh-add ~/.ssh/id_rsa
 addons:
