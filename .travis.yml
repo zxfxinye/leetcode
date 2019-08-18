@@ -11,5 +11,5 @@ before_install:
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
 after_success:
-- ssh -p 26830 root@95.169.14.25 -o StrictHostKeyChecking=no 'cd /home/github.com/leetcode
+- ssh -p ${port} root@95.169.14.25 -o StrictHostKeyChecking=no 'cd /home/github.com/leetcode
   && git pull'
